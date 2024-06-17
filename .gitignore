@@ -8,3 +8,9 @@
 /MyBlog.Common/obj
 /MyBlog.DAL/obj
 /MyBlog.Model/obj
+/MyBlog/.vs/ProjectEvaluation
+/MyBlog/bin/Debug/net8.0
+/MyBlog.BLL/bin/Debug/net8.0
+/MyBlog.Common/bin/Debug/net8.0
+/MyBlog.DAL/bin/Debug/net8.0
+/MyBlog.Model/bin/Debug/net8.0

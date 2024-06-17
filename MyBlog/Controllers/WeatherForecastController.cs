@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using MyBlog.BLL.Sys;
+using MyBlog.Common.Model;
+using MyBlog.Model.Sys;
 
 namespace MyBlog.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -13,9 +16,12 @@ namespace MyBlog.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly SysUserLogic sysUserLogic;
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, SysUserLogic sysUserLogic)
         {
             _logger = logger;
+            this.sysUserLogic = sysUserLogic;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -28,6 +34,12 @@ namespace MyBlog.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet(Name = "GetUser")]
+        public ApiResponse<SysUser> GetUser(string userName)
+        {
+            return new ApiResponse<SysUser>(sysUserLogic.GetSysUser(userName));
         }
     }
 }

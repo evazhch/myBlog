@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MyBlog.Common.Model
 {
-    public class BasicResponse<T>
+    public class ApiPageRequest<T>
     {
-        public string Code { get; set; }
+        public int PageIndex { get; set; }
 
-        public T Data { get; set; }
+        public int PageSize { get; set; }
 
-        public string Message { get; set; }        
+        public T SearchEntity { get; set; }
     }
 }
